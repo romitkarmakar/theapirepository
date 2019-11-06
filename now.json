@@ -1,0 +1,14 @@
+{
+	"build": {
+		"env": {
+            "NASA_API_KEY": "@nasa_api_key",
+            "IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
+            "ACCUWEATHER_KEY": "@accuweather_key"
+		}
+    },
+    "env": {
+        "NASA_API_KEY": "@nasa_api_key",
+        "IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
+        "ACCUWEATHER_KEY": "@accuweather_key"
+    }
+}

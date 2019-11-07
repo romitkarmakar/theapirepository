@@ -15,3 +15,9 @@ mv .env.example .env
 ```
 npm run dev
 ```
+
+## Get API Keys
+- **NASA API KEY** - https://api.nasa.gov/
+- **IEX API KEYS** - https://iexcloud.io/console/tokens
+- **ACCUWEATHER API KEY** - https://developer.accuweather.com/user/me/apps
+- **GITHUB API KEYS** - https://github.com/settings/applications/new (Register for a new OAuth Application)

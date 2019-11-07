@@ -21,3 +21,4 @@ npm run dev
 - **IEX API KEYS** - https://iexcloud.io/console/tokens
 - **ACCUWEATHER API KEY** - https://developer.accuweather.com/user/me/apps
 - **GITHUB API KEYS** - https://github.com/settings/applications/new (Register for a new OAuth Application)
+- **RAPIDAPI KEY** - https://rapidapi.com/

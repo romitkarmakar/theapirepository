@@ -22,3 +22,8 @@ npm run dev
 - **ACCUWEATHER API KEY** - https://developer.accuweather.com/user/me/apps
 - **GITHUB API KEYS** - https://github.com/settings/applications/new (Register for a new OAuth Application)
 - **RAPIDAPI KEY** - https://rapidapi.com/
+- **SPOTIFY API KEY** - https://developer.spotify.com/dashboard/applications
+
+## How to Contribute
+- Add env file structure to .env.example
+- Add the environment variables to now.json

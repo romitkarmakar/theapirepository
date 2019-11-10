@@ -1,26 +1,30 @@
 {
-  "build": {
-    "env": {
-      "NASA_API_KEY": "@nasa_api_key",
-      "IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
-      "ACCUWEATHER_KEY": "@accuweather_key",
-      "GITHUB_CLIENT_ID": "@github_client_id",
-      "GITHUB_CLIENT_SECRET": "@github_client_secret",
-      "BASE_URL": "@base_url",
-      "RAPIDAPI_KEY": "@rapidapi_key",
-      "SPOTIFY_CLIEN_ID": "@spotify_client_id",
-      "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret"
-    }
-  },
-  "env": {
-    "NASA_API_KEY": "@nasa_api_key",
-    "IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
-    "ACCUWEATHER_KEY": "@accuweather_key",
-    "GITHUB_CLIENT_ID": "@github_client_id",
-    "GITHUB_CLIENT_SECRET": "@github_client_secret",
-    "BASE_URL": "@base_url",
-    "RAPIDAPI_KEY": "@rapidapi_key",
-    "SPOTIFY_CLIEN_ID": "@spotify_client_id",
-    "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret"
-  }
+	"build": {
+		"env": {
+			"NASA_API_KEY": "@nasa_api_key",
+			"IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
+			"ACCUWEATHER_KEY": "@accuweather_key",
+			"GITHUB_CLIENT_ID": "@github_client_id",
+			"GITHUB_CLIENT_SECRET": "@github_client_secret",
+			"BASE_URL": "@base_url",
+			"RAPIDAPI_KEY": "@rapidapi_key",
+			"SPOTIFY_CLIENT_ID": "@spotify_client_id",
+			"SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
+			"IMGUR_CLIENT_ID": "@imgur_client_id",
+			"IMGUR_CLIENT_SECRET": "@imgur_client_secret"
+		}
+	},
+	"env": {
+		"NASA_API_KEY": "@nasa_api_key",
+		"IEX_PUBLISHABLE_KEY": "@iex_publishable_key",
+		"ACCUWEATHER_KEY": "@accuweather_key",
+		"GITHUB_CLIENT_ID": "@github_client_id",
+		"GITHUB_CLIENT_SECRET": "@github_client_secret",
+		"BASE_URL": "@base_url",
+		"RAPIDAPI_KEY": "@rapidapi_key",
+		"SPOTIFY_CLIENT_ID": "@spotify_client_id",
+		"SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
+		"IMGUR_CLIENT_ID": "@imgur_client_id",
+		"IMGUR_CLIENT_SECRET": "@imgur_client_secret"
+	}
 }

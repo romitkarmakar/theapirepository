@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import qs from "qs";
-
+import "../bootstrap.css";
 class spotify extends Component {
   constructor(props) {
     super(props);
@@ -123,7 +123,12 @@ class spotify extends Component {
               <img src={song.album.images[0].url}></img>
               <span>{song.album.name}</span>
               <p>Released in: {song.album.release_date}</p>
-              <p> Sung by: {song.album.artists[0].name}</p>
+              <p>
+                Sung by:
+                {song.album.artists.map(artist => (
+                  <span>{artist.name}</span>
+                ))}
+              </p>
             </div>
           );
         })}

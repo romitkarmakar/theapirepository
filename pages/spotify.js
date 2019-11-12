@@ -9,8 +9,8 @@ class spotify extends Component {
     this.state = {
       profile: null,
       query: "",
-      albums: [],
-      tracks: []
+      tracks: [],
+      logged_in: false
     };
 
     this.myProfile = this.myProfile.bind(this);
@@ -40,6 +40,7 @@ class spotify extends Component {
         .then(res => {
           localStorage.spotifyaccessToken = res.data.access_token;
           localStorage.spotifyrefreshToken = res.data.refresh_token;
+          this.setState({ logged_in: true });
         })
         .catch(res => res.data);
     }
@@ -86,7 +87,6 @@ class spotify extends Component {
       })
       .then(res => {
         this.setState({
-          albums: res.data.albums.items,
           tracks: res.data.tracks.items
         });
       })
@@ -94,7 +94,9 @@ class spotify extends Component {
   };
 
   render() {
-    let data = null;
+    let data = null,
+      bar = null,
+      log_button = null;
     if (this.state.profile != null) {
       data = (
         <div>
@@ -105,30 +107,57 @@ class spotify extends Component {
     } else {
       data = <div></div>;
     }
+    if (this.state.logged_in)
+      bar = (
+        <div>
+          <input
+            value={this.state.query}
+            onChange={e => this.setState({ query: e.target.value })}
+            placeholder="Enter song or album name"
+          ></input>
+          <button
+            onClick={this.findQuery}
+            type="button"
+            className="btn btn-dark"
+          >
+            Search
+          </button>
+        </div>
+      );
+    else bar = <p />;
+    if (!this.state.logged_in)
+      if (!this.state.logged_in)
+        log_button = (
+          <button onClick={this.login} type="button" className="btn btn-dark">
+            Login!
+          </button>
+        );
+      else log_button = <p />;
     return (
       <div>
-        hey!
-        <button onClick={this.login}>Click me</button>
-        <button onClick={this.myProfile}>Get Profile</button>
-        <input
-          value={this.state.query}
-          onChange={e => this.setState({ query: e.target.value })}
-          placeholder="Enter song or album name"
-        ></input>
-        <button onClick={this.findQuery}>Search</button>
+        {log_button}
+        <button onClick={this.myProfile} type="button" className="btn btn-dark">
+          Get Profile
+        </button>
+        {bar}
         {data}
         {this.state.tracks.map(song => {
           return (
-            <div>
-              <img src={song.album.images[0].url}></img>
-              <span>{song.album.name}</span>
-              <p>Released in: {song.album.release_date}</p>
-              <p>
-                Sung by:
+            <div className="alert alert-info">
+              <h4 className="alert-heading">{song.album.name}</h4>
+              <img
+                src={song.album.images[0].url}
+                height="200"
+                width="200"
+              ></img>
+              <hr />
+              <p className="mb-0">Released in: {song.album.release_date}</p>
+              Sung by:
+              <ul>
                 {song.album.artists.map(artist => (
-                  <span>{artist.name}</span>
+                  <li className="mb-0">{artist.name}</li>
                 ))}
-              </p>
+              </ul>
             </div>
           );
         })}

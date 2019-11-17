@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "image": "github.png",
+            "title": "Github API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/github"
+        },
+        {
+            "image": "nasa.jpg",
+            "title": "NASA API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/nasa"
+        },
+        {
+            "image": "imgur.png",
+            "title": "Imgur API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/imgur"
+        },
+        {
+            "image": "spotify.png",
+            "title": "Spotify API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/spotify"
+        },
+        {
+            "image": "stackexchange.png",
+            "title": "Stackexchange API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/stackexchange"
+        },
+        {
+            "image": "iexcloud.png",
+            "title": "IEX Cloud API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/iexcloud"
+        }
+    ]
+}

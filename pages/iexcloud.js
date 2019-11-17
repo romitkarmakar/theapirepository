@@ -14,7 +14,7 @@ export default class IEXCloud extends React.Component {
 
   stockLoad() {
     var self = this
-    axios.get(`https://cloud.iexapis.com/stable/tops?token=${process.env.IEX_PUBLISHABLE_KEY}&symbols=aapl`).then(res => {
+    axios.get(`https://cloud.iexapis.com/stable/stock/AAPL/quote?token=${process.env.IEX_PUBLISHABLE_KEY}`).then(res => {
       self.setState({
         currentStocks: res.data
       })
@@ -27,17 +27,15 @@ export default class IEXCloud extends React.Component {
 
   render() {
     if (this.state.currentStocks != null) {
-      let results = this.state.currentStocks.map((v) => {
-        return <div className="card">
+      let results = <div className="card">
         <div className="card-body">
-          <div className="card-title">{v.symbol}</div>
-          <p>{v.lastSalePrice}</p>
+          <div className="card-title">{this.state.currentStocks.symbol}</div>
+          <p>{this.state.currentStocks.latestPrice}</p>
         </div>
         <div className="card-footer">
-          Sector: {v.sector}
+          Name: {this.state.currentStocks.companyName}
         </div>
       </div>
-      })
         return <div>{results}</div>
     }
     else {

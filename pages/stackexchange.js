@@ -1,6 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import axios from 'axios'
+import Layout from '../components/Layout'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 export default class Github extends React.Component {
     constructor(props) {
@@ -21,23 +28,38 @@ export default class Github extends React.Component {
         })
     }
 
-render() {
-    let results = null
-    if (this.state.searchResults.length != 0) {
-        results = this.state.searchResults.map((v) => {
-            return <div>
-                <a href={v.link}><h2>{v.title}</h2></a>
-        <h3>Question by {v.owner.display_name}</h3>
-            </div>
-        })
-    } else {
-        results = <div>No results to show</div>
-    }
-    return <div>
-        <input className="form-control" placeholder="Search User" value={this.state.query} onChange={(e) => this.setState({ query: e.target.value })} />
-        <button onClick={this.search}>Search</button>
-        {results}
-    </div>
+    render() {
+        let results = null
+        if (this.state.searchResults.length != 0) {
+            results = this.state.searchResults.map((v) => {
+                return <Card>
+                    <CardContent>
+                        <Typography><h2>{v.title}</h2></Typography>
+                        <Typography>
+                            <h3>Question by {v.owner.display_name}</h3>
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                    <Button size="small"><a href={v.link}>Learn More</a></Button>
+                    </CardActions>
+                </Card>
+            })
+        } else {
+            results = <div>No results to show</div>
+        }
+        return <Layout>
+            <TextField
+                id="standard-basic"
+                label="Search Topic"
+                margin="normal"
+                value={this.state.query}
+                onChange={(e) => this.setState({ query: e.target.value })}
+            />
+            <Button variant="contained" color="primary" onClick={this.search}>
+                Search
+            </Button>
+            {results}
+        </Layout>
 
-}
+    }
 }

@@ -11,7 +11,9 @@
 			"SPOTIFY_CLIENT_ID": "@spotify_client_id",
 			"SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
 			"IMGUR_CLIENT_ID": "@imgur_client_id",
-			"IMGUR_CLIENT_SECRET": "@imgur_client_secret"
+			"IMGUR_CLIENT_SECRET": "@imgur_client_secret",
+			"STACKEXCHANGE_CLIENT_ID": "@stackexchange_client_id",
+			"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret"
 		}
 	},
 	"env": {
@@ -25,6 +27,8 @@
 		"SPOTIFY_CLIENT_ID": "@spotify_client_id",
 		"SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
 		"IMGUR_CLIENT_ID": "@imgur_client_id",
-		"IMGUR_CLIENT_SECRET": "@imgur_client_secret"
+		"IMGUR_CLIENT_SECRET": "@imgur_client_secret",
+		"STACKEXCHANGE_CLIENT_ID": "@stackexchange_client_id",
+		"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret"
 	}
 }

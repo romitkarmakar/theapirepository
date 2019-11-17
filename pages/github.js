@@ -41,7 +41,7 @@ export default class Github extends React.Component {
                         localStorage.githubAccessToken = val[1]
                     })
     } else if(!localStorage.githubAccessToken) {
-        window.location.href = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.BASE_URL}`
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.BASE_URL}github`
     }
 }
 

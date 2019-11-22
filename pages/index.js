@@ -6,6 +6,9 @@ import '../bootstrap.css'
 import ApiCard from '../components/ApiCard'
 import data from '../api.json'
 
+import LogRocket from 'logrocket';
+LogRocket.init('mk6dd2/theapirepository');
+
 export default () => {
   var result = data.items.map(v => {
     return <ApiCard image={v.image} title={v.title} description={v.description} link={v.link} />

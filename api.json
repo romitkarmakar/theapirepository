@@ -35,6 +35,18 @@
             "title": "IEX Cloud API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/iexcloud"
+        },
+        {
+            "image": "imdb.svg",
+            "title": "IMDB API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/imdb"
+        },
+        {
+            "image": "accuweather.jpg",
+            "title": "Accuweather API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/accuweather"
         }
     ]
 }

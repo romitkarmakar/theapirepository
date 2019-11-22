@@ -47,6 +47,12 @@
             "title": "Accuweather API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/accuweather"
+        },
+        {
+            "image": "googletranslate.png",
+            "title": "Google Translate API",
+            "description": "Explore the github repositories and users from this API.",
+            "link": "/googletranslate"
         }
     ]
 }

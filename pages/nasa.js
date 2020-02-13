@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import '../bootstrap.css'
 
 export default class Nasa extends React.Component {
   constructor(props) {

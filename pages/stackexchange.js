@@ -21,7 +21,7 @@ export default class Github extends React.Component {
 
     search() {
         var self = this
-        axios.get(`https://api.stackexchange.com/2.2/search?page=1&pagesize=5&order=desc&sort=activity&intitle=${self.state.query}&site=stackoverflow`).then(res => {
+        axios.get(`http://localhost:3000/api/stackexchange?id=${self.state.query}`).then(res => {
             self.setState({
                 searchResults: res.data.items
             })
@@ -31,12 +31,12 @@ export default class Github extends React.Component {
     render() {
         let results = null
         if (this.state.searchResults.length != 0) {
-            results = this.state.searchResults.map((v) => {
-                return <Card>
+            results = this.state.searchResults.map((v,index) => {
+                return <Card key={index}>
                     <CardContent>
-                        <Typography><h2>{v.title}</h2></Typography>
+                        <Typography variant="h5" component="h5">{v.title}</Typography>
                         <Typography>
-                            <h3>Question by {v.owner.display_name}</h3>
+                            Question by {v.owner.display_name}
                         </Typography>
                     </CardContent>
                     <CardActions>

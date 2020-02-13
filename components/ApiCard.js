@@ -31,9 +31,7 @@ export default (props) => {
         <Button size="small" color="primary">
             <Link href={props.link}>Explore</Link>
   </Button>
-        <Button size="small" color="primary">
-          Learn More
-  </Button>
+        
       </CardActions>
     </Card>
   </Grid>

@@ -1,0 +1,41 @@
+{
+  "cryptocurrencies": [
+    {
+      "symbol": "BTCUSD",
+      "name": "Bitcoin"
+    },
+    {
+      "symbol": "ETHUSD",
+      "name": "Ethereum"
+    },
+    {
+      "symbol": "ZECUSD",
+      "name": "ZCash"
+    },
+    {
+      "symbol": "BCHUSD",
+      "name": "Bitcoin Cash"
+    },
+    {
+      "symbol": "LTCUSD",
+      "name": "Litecoin"
+    }
+  ],
+  "stocks": [
+    {
+      "symbol": "AAPL"
+    },
+    {
+      "symbol": "MSFT"
+    },
+    {
+      "symbol": "NVDA"
+    },
+    {
+      "symbol": "CSCO"
+    },
+    {
+      "symbol": "QCOM"
+    }
+  ]
+}

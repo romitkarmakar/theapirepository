@@ -19,7 +19,7 @@ npm run dev
 
 ## Get API Keys
 - **NASA API KEY** - https://api.nasa.gov/
-- **IEX API KEYS** - https://iexcloud.io/console/tokens
+- **IEX API KEYS** - https://iexcloud.io/s/e3f8cff5
 - **ACCUWEATHER API KEY** - https://developer.accuweather.com/user/me/apps
 - **GITHUB API KEYS** - https://github.com/settings/applications/new (Register for a new OAuth Application)
 - **RAPIDAPI KEY** - https://rapidapi.com/

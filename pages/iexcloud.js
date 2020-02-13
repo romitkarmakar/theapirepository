@@ -99,7 +99,7 @@ export default class IEXCloud extends React.Component {
     return (
       <Container>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6}>
             <Card>
               <CardContent>
                 <CardHeader title="CryptoCurrencies List" />
@@ -116,7 +116,7 @@ export default class IEXCloud extends React.Component {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6}>
             <Card>
               <CardContent>
                 <CardHeader title="Stocks List" />

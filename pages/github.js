@@ -47,9 +47,9 @@ export default class Github extends React.Component {
   componentDidMount() {
     if (this.props.query.code) {
       axios
-        .get(`http://localhost:3000/api/github?code=${this.props.query.code}`, {
+        .get(`${process.env.BASE_URL}/api/github?code=${this.props.query.code}`, {
           headers: {
-            Origin: "http://localhost:3000"
+            Origin: `${process.env.BASE_URL}`
           }
         })
         .then(res => {

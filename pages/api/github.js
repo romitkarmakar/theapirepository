@@ -6,7 +6,7 @@ export default (req, res) => {
       `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${req.query.code}&redirect_uri=${process.env.BASE_URL}/github`,
       {
         headers: {
-            "Origin": "http://localhost:3000"
+            "Origin": `${process.env.BASE_URL}`
         }
       }
     )

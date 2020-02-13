@@ -1,7 +1,33 @@
 import React, { Component } from "react";
 import axios from "axios";
 import qs from "qs";
-class spotify extends Component {
+import {
+  Container,
+  Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Avatar,
+  Typography,
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  CardActions,
+  Button,
+  Link,
+  IconButton,
+  withStyles
+} from "@material-ui/core";
+import { ArrowForward } from "@material-ui/icons";
+
+const styles = theme =>({
+  root: {
+    padding: theme.spacing(1)
+  }
+})
+class Spotify extends Component {
   constructor(props) {
     super(props);
 
@@ -9,10 +35,12 @@ class spotify extends Component {
       profile: null,
       query: "",
       tracks: [],
+      newReleases: [],
       logged_in: false
     };
 
     this.myProfile = this.myProfile.bind(this);
+    this.fetchNewReleases = this.fetchNewReleases.bind(this);
   }
 
   static getInitialProps({ query }) {
@@ -28,7 +56,7 @@ class spotify extends Component {
         data: qs.stringify({
           grant_type: "authorization_code",
           code: self.props.query.code,
-          redirect_uri: "http://localhost:3000/spotify",
+          redirect_uri: `${process.env.BASE_URL}/spotify`,
           client_id: process.env.SPOTIFY_CLIENT_ID,
           client_secret: process.env.SPOTIFY_CLIENT_SECRET
         }),
@@ -39,9 +67,17 @@ class spotify extends Component {
         .then(res => {
           localStorage.spotifyaccessToken = res.data.access_token;
           localStorage.spotifyrefreshToken = res.data.refresh_token;
-          this.setState({ logged_in: true });
+          self.setState({ logged_in: true });
+          self.myProfile();
+          self.fetchNewReleases();
         })
         .catch(res => res.data);
+    } else {
+      if (localStorage.spotifyaccessToken) {
+        this.setState({ logged_in: true });
+        self.myProfile();
+        self.fetchNewReleases();
+      } else this.login();
     }
   }
 
@@ -54,7 +90,7 @@ class spotify extends Component {
       "&scope=" +
       encodeURIComponent("user-read-private user-read-email") +
       "&redirect_uri=" +
-      encodeURIComponent("http://localhost:3000/spotify");
+      encodeURIComponent(`${process.env.BASE_URL}/spotify`);
     window.location.href = URL;
   }
 
@@ -69,6 +105,21 @@ class spotify extends Component {
       .then(res => {
         self.setState({
           profile: res.data
+        });
+      });
+  }
+
+  fetchNewReleases() {
+    var self = this;
+    axios
+      .get("https://api.spotify.com/v1/browse/new-releases", {
+        headers: {
+          Authorization: `Bearer ${localStorage.spotifyaccessToken}`
+        }
+      })
+      .then(res => {
+        self.setState({
+          newReleases: res.data.albums.items
         });
       });
   }
@@ -93,76 +144,91 @@ class spotify extends Component {
   };
 
   render() {
-    let data = null,
-      bar = null,
-      log_button = null;
-    if (this.state.profile != null) {
-      data = (
-        <div>
-          <h1>{this.state.profile.display_name}</h1>
-          <h2>{this.state.profile.email}</h2>
-        </div>
-      );
-    } else {
-      data = <div></div>;
-    }
-    if (this.state.logged_in)
-      bar = (
-        <div>
-          <input
-            value={this.state.query}
-            onChange={e => this.setState({ query: e.target.value })}
-            placeholder="Enter song or album name"
-          ></input>
-          <button
-            onClick={this.findQuery}
-            type="button"
-            className="btn btn-dark"
-          >
-            Search
-          </button>
-        </div>
-      );
-    else bar = <p />;
-    if (!this.state.logged_in)
-      if (!this.state.logged_in)
-        log_button = (
-          <button onClick={this.login} type="button" className="btn btn-dark">
-            Login!
-          </button>
-        );
-      else log_button = <p />;
+    const { classes } = this.props;
     return (
-      <div>
-        {log_button}
-        <button onClick={this.myProfile} type="button" className="btn btn-dark">
-          Get Profile
-        </button>
-        {bar}
-        {data}
-        {this.state.tracks.map(song => {
-          return (
-            <div className="alert alert-info">
-              <h4 className="alert-heading">{song.album.name}</h4>
-              <img
-                src={song.album.images[0].url}
-                height="200"
-                width="200"
-              ></img>
-              <hr />
-              <p className="mb-0">Released in: {song.album.release_date}</p>
-              Sung by:
-              <ul>
-                {song.album.artists.map(artist => (
-                  <li className="mb-0">{artist.name}</li>
-                ))}
-              </ul>
-            </div>
-          );
-        })}
-      </div>
+      <Container>
+        <Grid container justify="center" className={classes.root}>
+          <Grid item xs={12} lg={6}>
+            {this.state.profile != null ? (
+              <Card>
+                <CardContent>
+                  <CardHeader
+                    avatar={<Avatar src={this.state.profile.images[0].url} />}
+                    title={this.state.profile.display_name}
+                    subheader={this.state.profile.email}
+                  />
+                  <Typography>Followers: {this.state.profile.followers.total} </Typography>
+                </CardContent>
+                <CardActions>
+                  <Link href={this.state.profile.external_urls.spotify}><Button color="primary">Go to Profile</Button></Link>
+                </CardActions>
+              </Card>
+            ) : null}
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} className={classes.root}>
+          <Grid item xs={12} lg={6}>
+            <Card>
+              <CardContent>
+                <CardHeader title="Search for Albums" />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  value={this.state.query}
+                  onChange={e => this.setState({ query: e.target.value })}
+                  label="Search Songs"
+                />
+                <List>
+                  {this.state.tracks.map(song => {
+                    return (
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar src={song.album.images[2].url} height="100" />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={song.album.name}
+                          secondary={`Released in: ${song.album.release_date}`}
+                        />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </CardContent>
+              <CardActions>
+                <Button color="primary" onClick={this.findQuery}>
+                  Search
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Card>
+              <CardContent>
+                <CardHeader title="New Releases" />
+                <List>
+                  {this.state.newReleases.map(song => {
+                    return (
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar src={song.images[2].url} height="100" />
+                        </ListItemAvatar>
+                        <ListItemText primary={song.name} />
+                        <Link href={song.external_urls.spotify}>
+                          <IconButton>
+                            <ArrowForward />
+                          </IconButton>
+                        </Link>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
     );
   }
 }
 
-export default spotify;
+export default withStyles(styles)(Spotify);

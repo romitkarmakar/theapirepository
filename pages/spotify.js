@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import qs from "qs";
-import "../bootstrap.css";
 class spotify extends Component {
   constructor(props) {
     super(props);

@@ -55,7 +55,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/topcities/50?apikey=${process.env.ACCUWEATHER_KEY}`
+        `https://dataservice.accuweather.com/locations/v1/topcities/50?apikey=${process.env.ACCUWEATHER_KEY}`
       )
       .then(res => {
         self.setState({
@@ -68,7 +68,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/regions?apikey=${process.env.ACCUWEATHER_KEY}`
+        `https://dataservice.accuweather.com/locations/v1/regions?apikey=${process.env.ACCUWEATHER_KEY}`
       )
       .then(res => {
         self.setState({
@@ -84,7 +84,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/countries/${val}?apikey=${process.env.ACCUWEATHER_KEY}`
+        `https://dataservice.accuweather.com/locations/v1/countries/${val}?apikey=${process.env.ACCUWEATHER_KEY}`
       )
       .then(res => {
         self.setState({
@@ -101,7 +101,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/adminareas/${val}?apikey=${process.env.ACCUWEATHER_KEY}`
+        `https://dataservice.accuweather.com/locations/v1/adminareas/${val}?apikey=${process.env.ACCUWEATHER_KEY}`
       )
       .then(res => {
         self.setState({
@@ -115,7 +115,7 @@ export default class Accuweather extends React.Component {
     axios.get("https://api.ipify.org/?format=json").then(response => {
       axios
         .get(
-          `http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${process.env.ACCUWEATHER_KEY}&q=${response.data.ip}`
+          `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${process.env.ACCUWEATHER_KEY}&q=${response.data.ip}`
         )
         .then(res => {
           self.setState({
@@ -129,7 +129,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.ACCUWEATHER_KEY}&q=${self.state.query}`
+        `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${process.env.ACCUWEATHER_KEY}&q=${self.state.query}`
       )
       .then(res => {
         self.setState({

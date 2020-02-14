@@ -5,9 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import ApiCard from "../components/ApiCard";
 import data from "../api.json";
 
-import LogRocket from "logrocket";
-LogRocket.init("mk6dd2/theapirepository");
-
 export default () => {
   return (
     <Layout>

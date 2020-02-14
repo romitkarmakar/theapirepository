@@ -25,6 +25,8 @@ npm run dev
 - **RAPIDAPI KEY** - https://rapidapi.com/
 - **SPOTIFY API KEY** - https://developer.spotify.com/dashboard/applications
 
-## How to Contribute
+## Call for Contribution
+- Create a api page in ```pages/``` folder.
 - Add env file structure to .env.example
 - Add the environment variables to now.json
+- Update api.json file.

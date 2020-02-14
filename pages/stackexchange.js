@@ -21,7 +21,7 @@ export default class Github extends React.Component {
 
     search() {
         var self = this
-        axios.get(`http://localhost:3000/api/stackexchange?id=${self.state.query}`).then(res => {
+        axios.get(`${process.env.BASE_URL}/api/stackexchange?id=${self.state.query}`).then(res => {
             self.setState({
                 searchResults: res.data.items
             })

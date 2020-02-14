@@ -106,6 +106,8 @@ class Spotify extends Component {
         self.setState({
           profile: res.data
         });
+      }).catch(err => {
+        self.login();
       });
   }
 

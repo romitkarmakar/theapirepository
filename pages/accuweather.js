@@ -55,7 +55,7 @@ export default class Accuweather extends React.Component {
     var self = this;
     axios
       .get(
-        `https://dataservice.accuweather.com/locations/v1/topcities/50?apikey=${process.env.ACCUWEATHER_KEY}`
+        `${process.env.BASE_URL}/api/accuweather?type=topcities`
       )
       .then(res => {
         self.setState({

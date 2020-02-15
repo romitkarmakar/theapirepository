@@ -13,7 +13,8 @@
 			"IMGUR_CLIENT_ID": "@imgur_client_id",
 			"IMGUR_CLIENT_SECRET": "@imgur_client_secret",
 			"STACKEXCHANGE_CLIENT_ID": "@stackexchange_client_id",
-			"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret"
+			"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret",
+			"OMDB_API_KEY": "@omdb_api_key"
 		}
 	},
 	"env": {
@@ -29,6 +30,7 @@
 		"IMGUR_CLIENT_ID": "@imgur_client_id",
 		"IMGUR_CLIENT_SECRET": "@imgur_client_secret",
 		"STACKEXCHANGE_CLIENT_ID": "@stackexchange_client_id",
-		"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret"
+		"STACKEXCHANGE_CLIENT_SECRET": "@stackexchange_client_secret",
+		"OMDB_API_KEY": "@omdb_api_key"
 	}
 }

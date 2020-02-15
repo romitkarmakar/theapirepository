@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from 'next/link'
 
 export default (props) => {
-    return <Grid item xs={6}>
+    return <Grid item xs={12} lg={6}>
     <Card>
       <CardActionArea>
         <CardMedia

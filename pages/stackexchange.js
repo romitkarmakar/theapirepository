@@ -1,65 +1,143 @@
-import React from 'react'
-import Link from 'next/link'
-import axios from 'axios'
-import Layout from '../components/Layout'
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Link from "next/link";
+import axios from "axios";
+import Layout from "../components/Layout";
+import {
+  Container,
+  Grid,
+  CardContent,
+  CardActions,
+  Card,
+  TextField,
+  Button,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+  IconButton,
+  List,
+  Typography,
+  CardHeader
+} from "@material-ui/core";
 
 export default class Github extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            query: "",
-            searchResults: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      searchResults: [],
+      info: []
+    };
+    this.search = this.search.bind(this);
+    this.getSiteInfo = this.getSiteInfo.bind(this);
+  }
+
+  static getInitialProps({ query }) {
+    return { query };
+  }
+
+  componentDidMount() {
+    var parsedHash = new URLSearchParams(window.location.hash.substr(1));
+    if (parsedHash.get("access_token") != null) {
+      localStorage.stackexchangeAccessToken = parsedHash.get("access_token");
+    } else if (!localStorage.stackexchangeAccessToken) {
+      window.location.href = `https://stackoverflow.com/oauth/dialog?client_id=${process.env.STACKEXCHANGE_CLIENT_ID}&scope=no_expiry&redirect_uri=${process.env.BASE_URL}/stackexchange`;
+    }
+  }
+
+  getSiteInfo() {
+    var self = this;
+    axios
+      .get(
+        `https://api.stackexchange.com/2.2/info?site=stackoverflow&access_token=${localStorage.stackexchangeAccessToken}&key=${process.env.STACKEXCHANGE_KEY}`
+      )
+      .then(res => {
+        var temp = [];
+        for (const [key, value] of Object.entries(res.data.items[0])) {
+          temp.push({
+            key: key,
+            value: value
+          });
         }
-        this.search = this.search.bind(this)
-    }
+        self.setState({
+          info: temp
+        });
+      });
+  }
 
-    search() {
-        var self = this
-        axios.get(`${process.env.BASE_URL}/api/stackexchange?id=${self.state.query}`).then(res => {
-            self.setState({
-                searchResults: res.data.items
-            })
-        })
-    }
+  search() {
+    var self = this;
+    axios
+      .get(
+        `${process.env.BASE_URL}/api/stackexchange?id=${self.state.query}&access_token=${localStorage.stackexchangeAccessToken}`
+      )
+      .then(res => {
+        self.setState({
+          searchResults: res.data.items
+        });
+      });
+  }
 
-    render() {
-        let results = null
-        if (this.state.searchResults.length != 0) {
-            results = this.state.searchResults.map((v,index) => {
-                return <Card key={index}>
-                    <CardContent>
-                        <Typography variant="h5" component="h5">{v.title}</Typography>
-                        <Typography>
-                            Question by {v.owner.display_name}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                    <Button size="small"><a href={v.link}>Learn More</a></Button>
-                    </CardActions>
-                </Card>
-            })
-        } else {
-            results = <div>No results to show</div>
-        }
-        return <Layout>
-            <TextField
-                id="standard-basic"
-                label="Search Topic"
-                margin="normal"
-                value={this.state.query}
-                onChange={(e) => this.setState({ query: e.target.value })}
-            />
-            <Button variant="contained" color="primary" onClick={this.search}>
-                Search
-            </Button>
-            {results}
-        </Layout>
-
-    }
+  render() {
+    return (
+      <Container>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={6}>
+            <Card>
+              <CardContent>
+                <TextField
+                  id="standard-basic"
+                  label="Search Topic"
+                  margin="normal"
+                  fullWidth
+                  variant="outlined"
+                  value={this.state.query}
+                  onChange={e => this.setState({ query: e.target.value })}
+                />
+                <List>
+                  {this.state.searchResults.map(v => (
+                    <ListItem>
+                      <ListItemAvatar>
+                        <Avatar src={v.owner.profile_image} />
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={v.title}
+                        secondary={v.owner.display_name}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.search}
+                >
+                  Search
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Card>
+              <CardContent>
+                  <CardHeader title="About Stack Overflow" />
+                  {this.state.info.map(v => <Typography>{v.key.replace(/_/g, " ")}: {v.value}</Typography>)}
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.getSiteInfo}
+                >
+                  Get Site Info
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
 }

@@ -49,10 +49,10 @@
             "link": "/accuweather"
         },
         {
-            "image": "googletranslate.png",
-            "title": "Google Translate API",
+            "image": "unsplash.jpeg",
+            "title": "Unsplash API",
             "description": "Explore the github repositories and users from this API.",
-            "link": "/googletranslate"
+            "link": "/unsplash"
         }
     ]
 }

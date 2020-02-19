@@ -53,6 +53,12 @@
             "title": "Unsplash API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/unsplash"
+        },
+        {
+            "image": "coinbase.png",
+            "title": "Coinbase API",
+            "description": "Get the latest bitcoin prices in realtime from Coinbase",
+            "link": "/coinbase"
         }
     ]
 }

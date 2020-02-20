@@ -1,13 +1,13 @@
 {
     "items": [
         {
-            "image": "github.png",
+            "image": "github.webp",
             "title": "Github API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/github"
         },
         {
-            "image": "nasa.jpg",
+            "image": "nasa.webp",
             "title": "NASA API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/nasa"
@@ -19,19 +19,19 @@
             "link": "/imgur"
         },
         {
-            "image": "spotify.png",
+            "image": "spotify.webp",
             "title": "Spotify API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/spotify"
         },
         {
-            "image": "stackexchange.png",
+            "image": "stackexchange.webp",
             "title": "Stackexchange API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/stackexchange"
         },
         {
-            "image": "iexcloud.png",
+            "image": "iexcloud.webp",
             "title": "IEX Cloud API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/iexcloud"
@@ -43,7 +43,7 @@
             "link": "/imdb"
         },
         {
-            "image": "accuweather.jpg",
+            "image": "accuweather.webp",
             "title": "Accuweather API",
             "description": "Explore the github repositories and users from this API.",
             "link": "/accuweather"
@@ -55,7 +55,7 @@
             "link": "/unsplash"
         },
         {
-            "image": "coinbase.png",
+            "image": "coinbase.webp",
             "title": "Coinbase API",
             "description": "Get the latest bitcoin prices in realtime from Coinbase",
             "link": "/coinbase"

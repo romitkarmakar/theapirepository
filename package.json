@@ -13,7 +13,7 @@
     "@material-ui/lab": "^4.0.0-alpha.42",
     "@material-ui/styles": "^4.6.0",
     "@zeit/next-css": "^1.0.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "logrocket": "^1.0.3",
     "next": "9.3.2",
